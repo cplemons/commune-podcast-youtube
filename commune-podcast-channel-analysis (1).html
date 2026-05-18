@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commune Podcast — YouTube Channel Strategy Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #181714;
+    --paper:     #f7f3ec;
+    --warm:      #e8e0d0;
+    --rule:      #cfc7b5;
+    --sage:      #4e6a52;
+    --sage-bg:   #eaf0eb;
+    --amber:     #a0601a;
+    --amber-bg:  #faf0e2;
+    --slate:     #3a4f63;
+    --slate-bg:  #e8edf2;
+    --dim:       #7a746a;
+    --white:     #fdfaf5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Karla', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.6;
+    padding: 36px 40px 52px;
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 2.5px solid var(--ink);
+    padding-top: 10px;
+    margin-bottom: 6px;
+  }
+  .masthead-left {
+    font-family: 'Karla', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .masthead-right {
+    font-size: 9px;
+    letter-spacing: .12em;
+    color: var(--dim);
+    text-align: right;
+  }
+  .rule-heavy { border-bottom: 1px solid var(--rule); margin-bottom: 20px; padding-bottom: 6px; }
+
+  /* ── HEADLINE ── */
+  .headline-row {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 32px;
+    margin-bottom: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .hed { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700; line-height: 1.02; letter-spacing: -.5px; }
+  .hed em { font-style: italic; color: var(--sage); }
+  .dek { margin-top: 10px; font-size: 13px; color: #3a3832; line-height: 1.65; font-weight: 300; }
+  .method-note {
+    margin-top: 10px;
+    background: var(--amber-bg);
+    border-left: 3px solid var(--amber);
+    padding: 8px 11px;
+    font-size: 10.5px;
+    color: #5a3a10;
+    line-height: 1.55;
+  }
+  .method-note strong { font-weight: 600; color: var(--amber); }
+
+  /* ── STAT STRIP ── */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-bottom: 22px;
+    background: var(--white);
+  }
+  .stat-cell {
+    padding: 14px 16px;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-cell::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .stat-cell.jk::after  { background: var(--slate); }
+  .stat-cell.oc::after  { background: var(--sage); }
+  .stat-ch {
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .stat-ch.jk { color: var(--slate); }
+  .stat-ch.oc { color: var(--sage); }
+  .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 700; line-height: 1; margin-bottom: 3px; }
+  .stat-label { font-size: 10px; color: var(--dim); line-height: 1.4; }
+
+  /* ── BODY GRID ── */
+  .body { display: grid; grid-template-columns: 1.4fr 1fr; gap: 22px; margin-bottom: 22px; }
+
+  /* ── CARDS ── */
+  .card { background: var(--white); border: 1px solid var(--rule); padding: 16px 18px; }
+  .card + .card { margin-top: 14px; }
+  .card-label {
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    border-bottom: 1px solid var(--warm);
+    padding-bottom: 7px;
+    margin-bottom: 12px;
+  }
+  .card-label span { float: right; color: var(--sage); font-size: 8px; letter-spacing: .1em; }
+
+  /* ── COMPARISON TABLE ── */
+  .cmp { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .cmp thead tr { background: var(--ink); }
+  .cmp th {
+    font-family: 'Karla', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--paper);
+    padding: 6px 10px;
+    text-align: left;
+  }
+  .cmp td { padding: 6px 10px; border-bottom: 1px solid var(--warm); vertical-align: top; }
+  .cmp tr:nth-child(even) td { background: rgba(232,224,208,.3); }
+  .cmp .m { font-size: 9.5px; color: var(--dim); font-family: 'Karla', monospace; }
+  .jk-val { color: var(--slate); font-weight: 500; }
+  .oc-val { color: var(--sage); font-weight: 500; }
+  .gap-val { font-size: 10.5px; color: var(--dim); }
+  .winner { background: rgba(78,106,82,.07) !important; }
+
+  /* ── EPISODE ROWS ── */
+  .ep { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--warm); align-items: flex-start; }
+  .ep:last-child { border-bottom: none; }
+  .ep-n { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--warm); line-height: 1.2; min-width: 22px; }
+  .ep-n.g { color: #b8960c; }
+  .ep-body { flex: 1; min-width: 0; }
+  .ep-title { font-size: 11.5px; font-weight: 500; line-height: 1.35; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ep-stats { font-size: 10px; color: var(--dim); }
+  .ep-stats b { color: var(--ink); font-weight: 500; }
+
+  /* ── INSIGHT CALLOUTS ── */
+  .insight { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--warm); align-items: flex-start; }
+  .insight:last-child { border-bottom: none; }
+  .insight-icon { font-size: 14px; line-height: 1.4; flex-shrink: 0; margin-top: 1px; }
+  .insight-body { font-size: 11.5px; color: #3a3832; line-height: 1.55; }
+  .insight-body strong { font-weight: 600; color: var(--ink); }
+
+  /* ── ACTION ITEMS ── */
+  .action { border-left: 3px solid var(--amber); padding: 9px 12px; margin-bottom: 8px; background: var(--amber-bg); }
+  .action-tag { font-size: 8px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--amber); margin-bottom: 3px; }
+  .action-body { font-size: 11.5px; line-height: 1.55; color: #3a3832; font-weight: 300; }
+  .action-body strong { font-weight: 600; color: var(--ink); }
+  .action.sage { border-left-color: var(--sage); background: var(--sage-bg); }
+  .action.sage .action-tag { color: var(--sage); }
+  .action.slate { border-left-color: var(--slate); background: var(--slate-bg); }
+  .action.slate .action-tag { color: var(--slate); }
+
+  /* ── VERDICT BAND ── */
+  .verdict {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 22px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: center;
+  }
+  .verdict-label { font-family: 'Karla', sans-serif; font-size: 8px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(247,243,236,.5); margin-bottom: 6px; }
+  .verdict-text { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; line-height: 1.45; color: var(--paper); }
+  .verdict-sub { font-size: 11.5px; color: rgba(247,243,236,.75); line-height: 1.6; margin-top: 6px; font-weight: 300; }
+  .verdict-sub strong { color: #c8d8a0; font-weight: 500; }
+  .verdict-num { text-align: center; }
+  .verdict-big { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 700; color: #c8d8a0; line-height: 1; }
+  .verdict-num-label { font-size: 9px; letter-spacing: .12em; color: rgba(247,243,236,.5); margin-top: 4px; line-height: 1.4; text-transform: uppercase; }
+
+  /* ── SIDEBAR ── */
+  .sidebar-section { margin-bottom: 18px; }
+
+  /* ── DATA GAPS ── */
+  .gaps { background: rgba(160,96,26,.08); border: 1px dashed var(--amber); padding: 11px 13px; font-size: 11px; color: #5a3a10; line-height: 1.6; }
+  .gaps-label { font-size: 8px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--amber); margin-bottom: 5px; }
+  .gaps li { margin-left: 14px; margin-bottom: 2px; }
+
+  /* ── FOOTER ── */
+  .footer { border-top: 1.5px solid var(--ink); padding-top: 9px; display: flex; justify-content: space-between; }
+  .footer-note { font-size: 8.5px; letter-spacing: .06em; color: var(--dim); }
+
+  /* ── BAR ── */
+  .bar-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+  .bar-lbl { font-size: 10.5px; color: var(--dim); width: 130px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-track { flex: 1; height: 6px; background: var(--warm); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .bar-fill.jk { background: var(--slate); }
+  .bar-fill.oc { background: var(--sage); }
+  .bar-val { font-size: 10.5px; font-weight: 500; color: var(--ink); min-width: 44px; text-align: right; }
+
+  @media print { body { padding: 18px 22px; font-size: 11px; } }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead rule-heavy">
+  <div class="masthead-left">Commune Podcast · YouTube Channel Performance Analysis · Confidential</div>
+  <div class="masthead-right">Sep 2025 – May 2026 · @jeffkrasno vs. @onecommune</div>
+</div>
+
+<!-- HEADLINE -->
+<div class="headline-row">
+  <div>
+    <div class="hed">Two Channels,<br>One <em>Clear Answer</em></div>
+    <p class="dek">The Commune Podcast moved to @jeffkrasno in September 2025. Eight months of data show the new channel is reaching a fraction of the audience @onecommune delivers — on every rate-normalized metric, not just raw scale. This analysis controls for channel age and audience size to give a fair read.</p>
+    <div class="method-note">
+      <strong>Methodology note.</strong> To avoid inflating @onecommune's numbers with years of catalog advantage, all head-to-head comparisons use only content published Sep 29, 2025 onward (the date @jeffkrasno launched). Rate metrics (CTR, view→sub, impr→sub) are used throughout so audience size difference doesn't distort the comparison.
+    </div>
+  </div>
+  <div>
+    <!-- SUMMARY STATS BLOCK -->
+    <div style="margin-bottom:10px;">
+      <div style="font-size:8.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:8px;">Channel totals · same 8-month window</div>
+      <div class="bar-row">
+        <div class="bar-lbl" style="color:var(--slate);font-weight:500;">@jeffkrasno</div>
+        <div class="bar-track"><div class="bar-fill jk" style="width:10%"></div></div>
+        <div class="bar-val" style="color:var(--slate);">184K</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl" style="color:var(--sage);font-weight:500;">@onecommune</div>
+        <div class="bar-track"><div class="bar-fill oc" style="width:100%"></div></div>
+        <div class="bar-val" style="color:var(--sage);">1.67M</div>
+      </div>
+      <div style="font-size:9px;color:var(--dim);margin-top:4px;margin-left:138px;">total channel views · same date window</div>
+    </div>
+    <div style="margin-bottom:10px;">
+      <div class="bar-row">
+        <div class="bar-lbl" style="color:var(--slate);font-weight:500;">@jeffkrasno avg daily</div>
+        <div class="bar-track"><div class="bar-fill jk" style="width:13%"></div></div>
+        <div class="bar-val" style="color:var(--slate);">1,095</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl" style="color:var(--sage);font-weight:500;">@onecommune avg daily</div>
+        <div class="bar-track"><div class="bar-fill oc" style="width:100%"></div></div>
+        <div class="bar-val" style="color:var(--sage);">7,209</div>
+      </div>
+      <div style="font-size:9px;color:var(--dim);margin-top:4px;margin-left:138px;">daily views · 6.6× gap</div>
+    </div>
+    <div style="background:var(--sage-bg);border-left:3px solid var(--sage);padding:9px 12px;font-size:11px;color:#2a3e2c;line-height:1.55;">
+      <strong style="font-weight:600;">Critical context:</strong> 100% of @onecommune's in-window views come from catalog content published <em>before</em> Sep 2025 — old episodes still driving 7,209 views/day with zero new production cost. The channel has long-term SEO compounding that @jeffkrasno is only beginning to build.
+    </div>
+  </div>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-cell jk">
+    <div class="stat-ch jk">@jeffkrasno · avg/episode</div>
+    <div class="stat-val">845</div>
+    <div class="stat-label">avg views per full episode<br>(56 episodes published)</div>
+  </div>
+  <div class="stat-cell oc">
+    <div class="stat-ch oc">@onecommune · avg/episode</div>
+    <div class="stat-val">9,616</div>
+    <div class="stat-label">avg views per full episode<br>(8 episodes, same window)</div>
+  </div>
+  <div class="stat-cell jk">
+    <div class="stat-ch jk">@jeffkrasno CTR</div>
+    <div class="stat-val">3.26%</div>
+    <div class="stat-label">avg click-through rate<br>45% of episodes below 3%</div>
+  </div>
+  <div class="stat-cell oc">
+    <div class="stat-ch oc">@onecommune CTR</div>
+    <div class="stat-val">5.71%</div>
+    <div class="stat-label">avg click-through rate<br>same-window episodes</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+<div class="main-col">
+
+  <!-- COMPARISON TABLE -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-label">Rate-Normalized Comparison — Full Episodes · Sep 2025–May 2026 <span>Rates remove audience-size bias</span></div>
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th style="width:34%">Metric</th>
+          <th>@jeffkrasno<br><span style="font-weight:400;font-size:7.5px;opacity:.7;">56 episodes · new channel</span></th>
+          <th>@onecommune<br><span style="font-weight:400;font-size:7.5px;opacity:.7;">8 episodes · same window</span></th>
+          <th>Gap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="winner">
+          <td><span class="m">Impression → Click (CTR)</span></td>
+          <td class="jk-val">3.26%</td>
+          <td class="oc-val">5.71%</td>
+          <td class="gap-val">OC +75%</td>
+        </tr>
+        <tr>
+          <td><span class="m">View → Subscriber rate</span></td>
+          <td class="jk-val">1.81%</td>
+          <td class="oc-val">2.14%</td>
+          <td class="gap-val">OC +18%</td>
+        </tr>
+        <tr class="winner">
+          <td><span class="m">Impression → Subscriber rate</span></td>
+          <td class="jk-val">0.175%</td>
+          <td class="oc-val">0.202%</td>
+          <td class="gap-val">OC +15%</td>
+        </tr>
+        <tr>
+          <td><span class="m">Avg impressions per episode</span></td>
+          <td class="jk-val">8,728</td>
+          <td class="oc-val">102,015</td>
+          <td class="gap-val">OC +11.7×</td>
+        </tr>
+        <tr class="winner">
+          <td><span class="m">Avg watch hours per episode</span></td>
+          <td class="jk-val">158 hrs</td>
+          <td class="oc-val">957 hrs</td>
+          <td class="gap-val">OC +6×</td>
+        </tr>
+        <tr>
+          <td><span class="m">Avg subscribers per episode</span></td>
+          <td class="jk-val">15.3</td>
+          <td class="oc-val">205.6</td>
+          <td class="gap-val">OC +13.4×</td>
+        </tr>
+        <tr class="winner">
+          <td><span class="m">Avg revenue per episode</span></td>
+          <td class="jk-val">$15.93</td>
+          <td class="oc-val">$76.62</td>
+          <td class="gap-val">OC +4.8×</td>
+        </tr>
+        <tr>
+          <td><span class="m">Episodes with CTR below 3%</span></td>
+          <td class="jk-val" style="color:var(--amber);">25 of 56 (45%)</td>
+          <td class="oc-val">0 of 8 (0%)</td>
+          <td class="gap-val">CTR floor issue at JK</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:9px;color:var(--dim);margin-top:6px;line-height:1.5;">The impression→subscriber and view→subscriber rates are size-agnostic: they measure content quality and audience fit regardless of how big the channel is. @onecommune outperforms on both. Note: OC's same-window episodes are Qigong content (not podcast), so podcast-specific OC rates would likely be even higher based on historical performance.</p>
+  </div>
+
+  <!-- TOP PERFORMERS -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-label">Top Episodes by Views — @jeffkrasno (all-time)</div>
+    <div class="ep">
+      <div class="ep-n g">1</div>
+      <div class="ep-body">
+        <div class="ep-title">Marianne Williamson: The Inner Shift That Transforms Your Life</div>
+        <div class="ep-stats"><b>9,865 views</b> · 1,681 hrs watch time · 150 subs · 3.52% CTR · Dec 25, 2025</div>
+      </div>
+    </div>
+    <div class="ep">
+      <div class="ep-n g">2</div>
+      <div class="ep-body">
+        <div class="ep-title">Dr. William Li: The 4 Gut Microbes That Help You Live to 100</div>
+        <div class="ep-stats"><b>7,895 views</b> · 147 subs · 4.48% CTR · Dec 2, 2025</div>
+      </div>
+    </div>
+    <div class="ep">
+      <div class="ep-n">3</div>
+      <div class="ep-body">
+        <div class="ep-title">3 Doctors: How to Strengthen Your Immune System Before Getting Sick</div>
+        <div class="ep-stats"><b>2,253 views</b> · 45 subs · 3.62% CTR · Dec 11, 2025</div>
+      </div>
+    </div>
+    <div class="ep">
+      <div class="ep-n">4</div>
+      <div class="ep-body">
+        <div class="ep-title">Dr. Gabor Maté: What Really Causes Addiction (It's Not Drugs)</div>
+        <div class="ep-stats"><b>2,057 views</b> · 24 subs · 4.93% CTR · Jan 5, 2026</div>
+      </div>
+    </div>
+    <div class="ep">
+      <div class="ep-n">5</div>
+      <div class="ep-body">
+        <div class="ep-title">Does Infrared Actually Heal You? The Cellular Science Behind Sauna</div>
+        <div class="ep-stats"><b>2,005 views</b> · 18 subs · 6.31% CTR — highest CTR on channel · Apr 9, 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY ACTIONS -->
+  <div class="card">
+    <div class="card-label">Recommended Path Forward</div>
+
+    <div class="action sage" style="margin-bottom:0;">
+      <div class="action-tag">Option A — Consolidate back to @onecommune (highest reach)</div>
+      <div class="action-body">Post all Commune Podcast full episodes to @onecommune and add @jeffkrasno as a collaborator on every upload. The channel already generates 7,209 views/day from catalog SEO alone and delivers 11.7× more impressions per episode. Jeff's personal brand stays associated with every video through the collaborator tag. <strong>This is the maximum-reach path, trading social separation for audience size.</strong></div>
+    </div>
+    <div style="text-align:center;font-size:10px;color:var(--dim);padding:5px 0;font-style:italic;">— or —</div>
+    <div class="action slate" style="margin-bottom:0;">
+      <div class="action-tag">Option B — Keep channels separate, but fix what's broken at @jeffkrasno</div>
+      <div class="action-body">If the team prefers separation, three changes are non-negotiable: <strong>(1) Fix CTR — 45% of episodes fall below 3%, indicating thumbnail and title problems.</strong> The top JK episode (Infrared, 6.31% CTR) and the top OC episodes (Qigong Day 1, 6.89%) both use specific benefit-led titles. The low performers use vague or obscure framing. <strong>(2) Stop publishing content categories with no proven Commune audience fit</strong> (political takes, business philosophy). <strong>(3) Publish the Commune Podcast name in every episode title</strong> — it's currently absent from almost all JK uploads, making the show invisible in search.</div>
+    </div>
+    <div style="margin-top:10px;">
+      <div class="action">
+        <div class="action-tag">Quick wins — either path</div>
+        <div class="action-body"><strong>Title formula:</strong> every top performer uses [Guest Name]: [Specific Outcome or Claim]. Infrared, Marianne Williamson, Dr. William Li all follow this — the low performers don't. <strong>Clip strategy:</strong> JK clips average 847 views vs OC clips at 4,005 — the teaser content isn't converting to full-episode views. Clips need a sharper watch-more hook in the final 3 seconds. <strong>Publishing cadence:</strong> Dec 2025 was JK's best month (47K views) driven by two breakout episodes back-to-back. Clustering strong guest releases rather than spacing them weekly likely amplifies each one.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <div class="sidebar-section">
+    <div class="card">
+      <div class="card-label">@jeffkrasno — Monthly View Trend</div>
+      <div class="bar-row" style="padding:3px 0;">
+        <div class="bar-lbl">Dec 2025</div>
+        <div class="bar-track"><div class="bar-fill jk" style="width:74%"></div></div>
+        <div class="bar-val">47K</div>
+      </div>
+      <div class="bar-row" style="padding:3px 0;">
+        <div class="bar-lbl">Mar 2026</div>
+        <div class="bar-track"><div class="bar-fill jk" style="width:100%"></div></div>
+        <div class="bar-val">63K</div>
+      </div>
+      <div class="bar-row" style="padding:3px 0;">
+        <div class="bar-lbl">Jan 2026</div>
+        <div class="bar-track"><div class="bar-fill jk" style="width:42%"></div></div>
+        <div class="bar-val">26K</div>
+      </div>
+      <div class="bar-row" style="padding:3px 0;">
+        <div class="bar-lbl">Feb 2026</div>
+        <div class="bar-track"><div class="bar-fill jk" style="width:31%"></div></div>
+        <div class="bar-val">20K</div>
+      </div>
+      <div class="bar-row" style="padding:3px 0;">
+        <div class="bar-lbl">Apr 2026</div>
+        <div class="bar-track"><div class="bar-fill jk" style="width:31%"></div></div>
+        <div class="bar-val">20K</div>
+      </div>
+      <div class="bar-row" style="padding:3px 0;">
+        <div class="bar-lbl">May 2026 (partial)</div>
+        <div class="bar-track"><div class="bar-fill jk" style="width:11%"></div></div>
+        <div class="bar-val">7K</div>
+      </div>
+      <p style="font-size:9.5px;color:var(--dim);margin-top:8px;line-height:1.5;">No consistent upward trend. Mar spike driven by Middle East news video (45K views) — one viral outlier, not channel growth. Underlying podcast performance is flat.</p>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="card">
+      <div class="card-label">@onecommune — Catalog Still Working</div>
+      <div class="insight">
+        <div class="insight-icon">📈</div>
+        <div class="insight-body"><strong>100% of OC's current views</strong> come from pre-2025 catalog. No new content needed — old episodes drive 7,209 views/day passively.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-icon">🔍</div>
+        <div class="insight-body">Top catalog performers still pulling views daily: <strong>Russell Brand</strong> (24K views in window), <strong>Dr. Bruce Lipton</strong> (12K), <strong>Sadhguru</strong> (8.6K). These episodes rank in YouTube search years after publish.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-icon">💡</div>
+        <div class="insight-body">This is the compounding SEO advantage @jeffkrasno is 2–4 years away from building — <strong>if</strong> it publishes the right content categories consistently.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="card">
+      <div class="card-label">@jeffkrasno CTR Distribution — Full Episodes</div>
+      <div style="display:flex;gap:0;border:1px solid var(--warm);overflow:hidden;height:36px;margin-bottom:8px;border-radius:2px;">
+        <div style="width:20%;background:#d4643a;display:flex;align-items:center;justify-content:center;font-size:9px;color:white;font-weight:600;">&lt;2%<br>20%</div>
+        <div style="width:25%;background:#c4844a;display:flex;align-items:center;justify-content:center;font-size:9px;color:white;font-weight:600;">2–3%<br>25%</div>
+        <div style="width:27%;background:#8a9e60;display:flex;align-items:center;justify-content:center;font-size:9px;color:white;font-weight:600;">3–4%<br>27%</div>
+        <div style="width:18%;background:#5a7c50;display:flex;align-items:center;justify-content:center;font-size:9px;color:white;font-weight:600;">4–5%<br>18%</div>
+        <div style="width:10%;background:#3a5a40;display:flex;align-items:center;justify-content:center;font-size:9px;color:white;font-weight:600;">&gt;5%<br>9%</div>
+      </div>
+      <p style="font-size:10px;color:var(--dim);line-height:1.5;"><strong style="color:var(--amber);">45% of episodes fall below 3% CTR.</strong> YouTube's algorithm deprioritizes content with low CTR in browse and suggested feeds — this is a direct suppression signal. Industry benchmark for healthy podcast content is 3.5–5%.</p>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="card">
+      <div class="card-label">Why YouTube Favors @onecommune</div>
+      <div class="insight">
+        <div class="insight-icon">🔁</div>
+        <div class="insight-body"><strong>CTR compounds into distribution.</strong> Strong early CTR tells YouTube to push a video harder into suggested feeds, generating more watch time, earning more impressions — a self-reinforcing cycle. At 45% of episodes below 3%, @jeffkrasno never enters that loop.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-icon">🎯</div>
+        <div class="insight-body"><strong>Audience fit is already trained.</strong> YouTube knows exactly who watches @onecommune and serves episodes to lookalike audiences at scale. @jeffkrasno is still in the learning phase — explaining the 11.7× impressions gap despite similar content quality.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-icon">🔎</div>
+        <div class="insight-body"><strong>Search-optimized titles rank for years.</strong> @onecommune titles were built around evergreen search intent — addiction, longevity, grief, manifestation. YouTube Search works like Google: old episodes keep surfacing daily for free. @jeffkrasno titles skew conversational over searchable.</div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+
+<!-- VERDICT -->
+<div class="verdict">
+  <div class="verdict-num">
+    <div class="verdict-big">11.7×</div>
+    <div class="verdict-num-label">more impressions<br>per episode<br>@onecommune vs @jeffkrasno<br>same time window</div>
+  </div>
+  <div>
+    <div class="verdict-label">Bottom Line</div>
+    <div class="verdict-text">"The data favors consolidation — but separation can work if the CTR and content-fit problems are fixed first."</div>
+    <div class="verdict-sub">@onecommune delivers 11.7× more impressions, 6× more watch time, and 13× more subscribers per episode in the same time window. The rate-normalized metrics show this isn't just a size advantage — @onecommune content genuinely converts better per impression served. That said, <strong>the gap is closeable at @jeffkrasno</strong> with three specific fixes: benefit-led titles with the Commune Podcast name, thumbnails that lift CTR above 4%, and a tighter content strategy focused on proven categories (health transformation, longevity, grief, addiction, consciousness). The current 45% below-3% CTR rate is the most urgent problem regardless of which channel the podcast lives on.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-note">Source: YouTube Studio Analytics · @jeffkrasno + @onecommune · Sep 2025–May 2026</div>
+  <div class="footer-note">Commune Podcast · Internal Strategy Document · May 2026</div>
+</div>
+
+</body>
+</html>
